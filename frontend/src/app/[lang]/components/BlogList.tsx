@@ -43,7 +43,7 @@ interface Article {
   };
 }
 
-export default function PostList({
+export default function BlogList({
   data: articles,
   children,
 }: {
