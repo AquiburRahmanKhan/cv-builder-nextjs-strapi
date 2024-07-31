@@ -4,12 +4,11 @@ note: This project was started with love by [Trecia](https://github.com/TreciaKS
 
 ![demo-site](https://user-images.githubusercontent.com/6153188/231865321-0da5e81f-4832-4cce-bcd1-ecd79e9b9cc3.gif)
 
-
 ## Hello Strapi
 
 Strapi Community Edition is a free and open-source headless CMS enabling you to manage any content, anywhere.
 
-- **Self-hosted or Cloud**: You can host and scale Strapi projects the way you want. You can save time by deploying to [Strapi Cloud](https://cloud.strapi.io/signups?source=github1) or deploy to the hosting platform you want**: AWS, Azure, Google Cloud, DigitalOcean.
+- **Self-hosted or Cloud**: You can host and scale Strapi projects the way you want. You can save time by deploying to [Strapi Cloud](https://cloud.strapi.io/signups?source=github1) or deploy to the hosting platform you want\*\*: AWS, Azure, Google Cloud, DigitalOcean.
 - **Modern Admin Pane**: Elegant, entirely customizable and a fully extensible admin panel.
 - **Multi-database support**: You can choose the database you prefer: PostgreSQL, MySQL, MariaDB, and SQLite.
 - **Customizable**: You can quickly build your logic by fully customizing APIs, routes, or plugins to fit your needs perfectly.
@@ -27,7 +26,6 @@ Strapi Community Edition is a free and open-source headless CMS enabling you to 
 - **GraphQL or REST**: Consume the API using REST or GraphQL
 
 You can unlock additional features such as SSO, Audit Logs, Review Workflows in [Strapi Cloud](https://cloud.strapi.io/login?source=github1) or [Strapi Enterprise](https://strapi.io/enterprise?source=github1).
-
 
 ## Getting Started
 
@@ -144,21 +142,6 @@ When creating a Token, just select the `Read-only` option from token type drop d
 
 <img width="1093" alt="create-read-only-token" src="https://github.com/strapi/nextjs-corporate-starter/assets/6153188/3ea6c029-b296-4bbc-a5ce-33eedac52a03">
 
-Next create a token that will allow us to submit our form.
-
-Name: Public API Form Submit
-Description: Form Submission.
-Token duration: Unlimited
-Token type: Custom
-
-In Permissions lets give the following access.
-
-| Content              | Permissions |
-| -------------------- | :---------: |
-| Lead-Form-Submission |   create    |
-
-Add your token to your `NEXT_PUBLIC_STRAPI_FORM_SUBMISSION_TOKEN` variable name in the `.env` file.
-
 Once your environment variables are set you can start your frontend application by running `yarn dev`.
 
 You should now see your Next JS frontend.
@@ -187,6 +170,7 @@ You can find the setting inside the `package.json` file inside the root folder.
   }
 }
 ```
+
 Go to the root folder and install the package, `yarn`
 You can start both apps by running `yarn dev`.
 
@@ -325,8 +309,9 @@ yarn repo:upstream
 ## FAQ
 
 ### How do I add additional pages?
+
 Check out [this video](https://youtu.be/EoVrTNA3geM) where I will guide on how to do this.
 
 ### How do I update my Strapi version?
-Check out this [this issue comment](https://github.com/strapi/nextjs-corporate-starter/issues/17#issuecomment-1558149967)
 
+Check out this [this issue comment](https://github.com/strapi/nextjs-corporate-starter/issues/17#issuecomment-1558149967)

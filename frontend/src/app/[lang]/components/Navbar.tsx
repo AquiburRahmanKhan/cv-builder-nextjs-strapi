@@ -4,7 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { fetchAPI } from "../utils/fetch-api";
 
 interface NavLink {
   id: number;
@@ -64,9 +65,29 @@ export default function Navbar({
   logoText: string | null;
 }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [cartDetails, setCartDetails] = useState(0);
   const closeMenu = () => {
     setMobileMenuOpen(false);
   };
+
+  const getCartDetails = async () => {
+    try {
+      const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
+      const path = `/cart`;
+      const urlParamsObject = {};
+      const options = { headers: { Authorization: `Bearer ${token}` } };
+      const responseData = await fetchAPI(path, urlParamsObject, options);
+
+      setCartDetails(responseData.data.attributes.numberOfItems);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getCartDetails();
+  }, []);
+
   return (
     <div className="p-4 dark:bg-black dark:text-gray-100">
       <div className="container flex justify-between h-16 mx-auto px-0 sm:px-6">
@@ -80,6 +101,7 @@ export default function Navbar({
               <NavLink key={item.id} {...item} />
             ))}
           </ul>
+          <div>{cartDetails}</div>
         </div>
 
         <Dialog

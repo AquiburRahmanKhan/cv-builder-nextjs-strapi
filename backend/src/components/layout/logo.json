@@ -16,9 +16,6 @@
         "videos",
         "audios"
       ]
-    },
-    "logoText": {
-      "type": "string"
     }
   }
 }
