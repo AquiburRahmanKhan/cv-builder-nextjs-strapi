@@ -1,55 +1,42 @@
-"use client";
-import { useState, useEffect, useCallback } from "react";
 import { fetchAPI } from "../../../utils/fetch-api";
 
-import Loader from "../../../components/Loader";
 import { Department, Doctor } from "../../../utils/model";
 import Link from "next/link";
 import Media from "../../../components/Media";
 
-export default function DepartmentDetails({
+const fetchDepartment = async (params: { url: string }) => {
+  try {
+    const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
+    const path = `/departments`;
+    const urlParamsObject = {
+      filters: {
+        url: {
+          $eq: params.url,
+        },
+      },
+      populate: {
+        doctors: {
+          populate: {
+            photo: "*",
+          },
+        },
+      },
+    };
+    const options = { headers: { Authorization: `Bearer ${token}` } };
+    const responseData = await fetchAPI(path, urlParamsObject, options);
+
+    return responseData.data[0];
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export default async function DepartmentDetails({
   params,
 }: {
   params: { url: string };
 }) {
-  const [data, setData] = useState<Department | null>(null);
-  const [isLoading, setLoading] = useState(true);
-
-  const fetchDepartment = useCallback(async () => {
-    setLoading(true);
-    try {
-      const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
-      const path = `/departments`;
-      const urlParamsObject = {
-        filters: {
-          url: {
-            $eq: params.url,
-          },
-        },
-        populate: {
-          doctors: {
-            populate: {
-              photo: "*",
-            },
-          },
-        },
-      };
-      const options = { headers: { Authorization: `Bearer ${token}` } };
-      const responseData = await fetchAPI(path, urlParamsObject, options);
-
-      setData(responseData.data[0]);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  }, [params.url]);
-
-  useEffect(() => {
-    fetchDepartment();
-  }, [fetchDepartment]);
-
-  if (isLoading) return <Loader />;
+  const data: Department = await fetchDepartment(params);
 
   return (
     <section className="container p-6 mx-auto">

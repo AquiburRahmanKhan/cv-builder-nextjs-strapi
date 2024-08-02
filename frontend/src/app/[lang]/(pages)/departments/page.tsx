@@ -1,39 +1,30 @@
-"use client";
-import { useState, useEffect, useCallback } from "react";
 import { fetchAPI } from "../../utils/fetch-api";
-
-import Loader from "../../components/Loader";
 import { Department } from "../../utils/model";
 import Link from "next/link";
 
-export default function Departments() {
-  const [data, setData] = useState<any>([]);
-  const [isLoading, setLoading] = useState(true);
+const fetchDepartments = async () => {
+  try {
+    const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
+    const path = `/departments`;
+    const urlParamsObject = {
+      sort: { name: "asc" },
+    };
+    const options = { headers: { Authorization: `Bearer ${token}` } };
+    const responseData = await fetchAPI(path, urlParamsObject, options);
 
-  const fetchDepartments = useCallback(async () => {
-    setLoading(true);
-    try {
-      const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
-      const path = `/departments`;
-      const urlParamsObject = {
-        sort: { name: "asc" },
-      };
-      const options = { headers: { Authorization: `Bearer ${token}` } };
-      const responseData = await fetchAPI(path, urlParamsObject, options);
+    return responseData.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
 
-      setData(responseData.data);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchDepartments();
-  }, [fetchDepartments]);
-
-  if (isLoading) return <Loader />;
+export default async function Departments({
+  params,
+}: {
+  params: { url: string };
+}) {
+  const url = params.url;
+  const data = await fetchDepartments();
 
   return (
     <section className="container p-6 mx-auto">

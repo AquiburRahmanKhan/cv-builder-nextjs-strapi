@@ -1,43 +1,29 @@
-"use client";
-import { useState, useEffect, useCallback } from "react";
 import { fetchAPI } from "../../utils/fetch-api";
-
-import Loader from "../../components/Loader";
 import { Doctor } from "../../utils/model";
 import Link from "next/link";
 import Media from "../../components/Media";
 
-export default function Doctors() {
-  const [data, setData] = useState<any>([]);
-  const [isLoading, setLoading] = useState(true);
+const fetchDoctors = async () => {
+  try {
+    const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
+    const path = `/doctors`;
+    const urlParamsObject = {
+      sort: { name: "asc" },
+      populate: {
+        photo: "*",
+      },
+    };
+    const options = { headers: { Authorization: `Bearer ${token}` } };
+    const responseData = await fetchAPI(path, urlParamsObject, options);
 
-  const fetchDoctors = useCallback(async () => {
-    setLoading(true);
-    try {
-      const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
-      const path = `/doctors`;
-      const urlParamsObject = {
-        sort: { name: "asc" },
-        populate: {
-          photo: "*",
-        },
-      };
-      const options = { headers: { Authorization: `Bearer ${token}` } };
-      const responseData = await fetchAPI(path, urlParamsObject, options);
+    return responseData.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
 
-      setData(responseData.data);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchDoctors();
-  }, [fetchDoctors]);
-
-  if (isLoading) return <Loader />;
+export default async function Doctors() {
+  const data = await fetchDoctors();
 
   return (
     <section className="container p-6 mx-auto">
