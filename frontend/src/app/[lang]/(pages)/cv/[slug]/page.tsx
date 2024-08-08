@@ -58,7 +58,7 @@ const CVBuilder = async ({ params }: { params: { slug: string } }) => {
 
   return (
     <div className="bg-black">
-      <div className="bg-white max-w-4xl mx-auto px-10 py-16 min-h-screen">
+      <div className="bg-white max-w-[800px] mx-auto px-10 py-16 min-h-screen">
         {/* Personal information section */}
         <section className="flex w-full border-b border-black pb-8 px-6">
           {/* Avatar */}
@@ -91,26 +91,22 @@ const CVBuilder = async ({ params }: { params: { slug: string } }) => {
               </div>
             </div>
             <div className="flex flex-col gap-4">
-              <div className="flex gap-8">
+              <div className="flex gap-2 items-center">
+                <div className="flex justify-center items-center bg-black w-5 h-5">
+                  <FaPhone className="text-xs text-white" />
+                </div>
+                <p className="font-poppinsLight">{employee.attributes.phone}</p>
+              </div>
+              {employee.attributes.website ? (
                 <div className="flex gap-2 items-center">
                   <div className="flex justify-center items-center bg-black w-5 h-5">
-                    <FaPhone className="text-xs text-white" />
+                    <BsFillLaptopFill className="text-sm text-white" />
                   </div>
                   <p className="font-poppinsLight">
-                    {employee.attributes.phone}
+                    {employee.attributes.website}
                   </p>
                 </div>
-                {employee.attributes.website ? (
-                  <div className="flex gap-2 items-center">
-                    <div className="flex justify-center items-center bg-black w-5 h-5">
-                      <BsFillLaptopFill className="text-sm text-white" />
-                    </div>
-                    <p className="font-poppinsLight">
-                      {employee.attributes.website}
-                    </p>
-                  </div>
-                ) : null}
-              </div>
+              ) : null}
               <div className="flex gap-2 items-center">
                 <div className="flex justify-center items-center bg-black w-5 h-5">
                   <MdEmail className="text-sm text-white" />
