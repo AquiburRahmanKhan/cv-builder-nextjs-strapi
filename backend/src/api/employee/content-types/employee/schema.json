@@ -1,0 +1,83 @@
+{
+  "kind": "collectionType",
+  "collectionName": "employees",
+  "info": {
+    "singularName": "employee",
+    "pluralName": "employees",
+    "displayName": "Employee",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "designation": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "website": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "avatar": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "educations": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cv.education"
+    },
+    "profile": {
+      "type": "text"
+    },
+    "experiences": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cv.experiences"
+    },
+    "projects": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cv.projects"
+    },
+    "techStacks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cv.points"
+    },
+    "tools": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cv.points"
+    },
+    "skills": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cv.points"
+    },
+    "languages": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cv.points"
+    }
+  }
+}

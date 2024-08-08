@@ -88,9 +88,11 @@ export default async function RootLayout({
         />
       ) : null}
 
-      <main className="dark:bg-black dark:text-gray-100 min-h-screen">
+      {/* <main className="dark:bg-black dark:text-gray-100 min-h-screen">
         {children}
-      </main>
+      </main> */}
+
+      <main className="min-h-screen">{children}</main>
 
       {showFooter ? (
         <Footer

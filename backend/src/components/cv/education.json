@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_cv_educations",
+  "info": {
+    "displayName": "Education",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "degree": {
+      "type": "string"
+    },
+    "institution": {
+      "type": "string"
+    },
+    "dateRange": {
+      "type": "string"
+    }
+  }
+}

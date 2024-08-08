@@ -28,9 +28,7 @@
     "contentSections": {
       "type": "dynamiczone",
       "components": [
-        "sections.hero",
-        "sections.all-doctors",
-        "sections.all-departments"
+        "sections.hero"
       ],
       "pluginOptions": {
         "i18n": {

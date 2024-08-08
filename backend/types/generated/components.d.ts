@@ -1,5 +1,58 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface CvEducation extends Schema.Component {
+  collectionName: 'components_cv_educations';
+  info: {
+    displayName: 'Education';
+    description: '';
+  };
+  attributes: {
+    degree: Attribute.String;
+    institution: Attribute.String;
+    dateRange: Attribute.String;
+  };
+}
+
+export interface CvExperiences extends Schema.Component {
+  collectionName: 'components_cv_experiences';
+  info: {
+    displayName: 'experiences';
+    description: '';
+  };
+  attributes: {
+    companyName: Attribute.String;
+    role: Attribute.String;
+    duration: Attribute.String;
+    points: Attribute.Component<'cv.points', true>;
+  };
+}
+
+export interface CvPoints extends Schema.Component {
+  collectionName: 'components_cv_points';
+  info: {
+    displayName: 'points';
+  };
+  attributes: {
+    point: Attribute.Text;
+  };
+}
+
+export interface CvProjects extends Schema.Component {
+  collectionName: 'components_cv_projects';
+  info: {
+    displayName: 'Projects';
+    description: '';
+  };
+  attributes: {
+    projectName: Attribute.String;
+    duration: Attribute.String;
+    link: Attribute.String;
+    points: Attribute.Component<'cv.points', true>;
+    tech: Attribute.Text;
+    role: Attribute.String;
+  };
+}
+
 export interface ElementsFooterSection extends Schema.Component {
   collectionName: 'components_links_footer_sections';
   info: {
@@ -139,31 +192,6 @@ export interface MetaMetadata extends Schema.Component {
   };
 }
 
-export interface SectionsAllDepartments extends Schema.Component {
-  collectionName: 'components_sections_all_departments';
-  info: {
-    displayName: 'AllDepartments';
-  };
-  attributes: {
-    title: Attribute.String;
-    description: Attribute.Text;
-    button: Attribute.Component<'links.button-link'>;
-  };
-}
-
-export interface SectionsAllDoctors extends Schema.Component {
-  collectionName: 'components_sections_all_doctors';
-  info: {
-    displayName: 'AllDoctors';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String;
-    description: Attribute.String;
-    button: Attribute.Component<'links.button-link'>;
-  };
-}
-
 export interface SectionsHero extends Schema.Component {
   collectionName: 'components_slices_heroes';
   info: {
@@ -198,6 +226,10 @@ export interface SharedSeo extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'cv.education': CvEducation;
+      'cv.experiences': CvExperiences;
+      'cv.points': CvPoints;
+      'cv.projects': CvProjects;
       'elements.footer-section': ElementsFooterSection;
       'elements.logos': ElementsLogos;
       'layout.footer': LayoutFooter;
@@ -208,8 +240,6 @@ declare module '@strapi/types' {
       'links.link': LinksLink;
       'links.social-link': LinksSocialLink;
       'meta.metadata': MetaMetadata;
-      'sections.all-departments': SectionsAllDepartments;
-      'sections.all-doctors': SectionsAllDoctors;
       'sections.hero': SectionsHero;
       'shared.seo': SharedSeo;
     }

@@ -70,45 +70,53 @@ export interface RootObject {
   meta: Meta;
 }
 
-export interface Department {
+export interface Education {
   id: number;
-  attributes: {
-    createdAt: string;
-    description: string;
-    name: string;
-    url: string;
-    updatedAt: string;
-    publishedAt: string;
-    doctors: {
-      data: Doctor[];
-    };
-  };
+  institution: string;
+  degree: string;
+  dateRange: string;
 }
 
-export interface Doctor {
+export interface Point {
+  id: number;
+  point: string;
+}
+
+export interface Experience {
+  id: number;
+  companyName: string;
+  role: string;
+  duration: string;
+  points: Point[];
+}
+
+export interface Projects {
+  id: number;
+  projectName: string;
+  role: string;
+  link: string;
+  duration: string;
+  points: Point[];
+}
+
+export interface Employee {
   id: number;
   attributes: {
-    createdAt: string;
-    degrees: string;
-    designation: string;
+    slug: string;
     name: string;
-    publishedAt: string;
-    roomNo: string;
-    specialty: string;
-    updatedAt: string;
-    visitingHours: string;
-    url: string;
-    photo: {
-      data: {
-        id: number;
-        attributes: {
-          url: string;
-          alternativeText: string;
-          caption: string;
-          width: number;
-          height: number;
-        };
-      };
-    };
+    designation: string;
+    email: string;
+    phone: string;
+    website?: string;
+    avatar: Picture;
+    avatarImageUrl?: string;
+    educations: Education[];
+    profile: string;
+    experiences: Experience[];
+    projects: Projects[];
+    techStacks: Point[];
+    tools: Point[];
+    skills: Point[];
+    languages: Point[];
   };
 }

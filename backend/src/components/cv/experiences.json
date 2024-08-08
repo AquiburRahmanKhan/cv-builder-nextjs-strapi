@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_cv_experiences",
+  "info": {
+    "displayName": "experiences",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "companyName": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    },
+    "duration": {
+      "type": "string"
+    },
+    "points": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cv.points"
+    }
+  }
+}
