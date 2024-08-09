@@ -58,7 +58,7 @@ const CVBuilder = async ({ params }: { params: { slug: string } }) => {
 
   return (
     <div className="bg-black">
-      <div className="bg-white max-w-[800px] mx-auto px-10 py-16 min-h-screen">
+      <div className="bg-white max-w-[210mm] mx-auto px-10 min-h-screen">
         {/* Personal information section */}
         <section className="flex w-full border-b border-black pb-8 px-6">
           {/* Avatar */}
@@ -80,12 +80,12 @@ const CVBuilder = async ({ params }: { params: { slug: string } }) => {
           <div className="w-3/5 pt-4 flex flex-col gap-14">
             <div className="flex flex-col gap-2">
               <div>
-                <h1 className="text-5xl font-poppinsBold tracking-wider uppercase">
+                <h1 className="text-4xl font-poppinsBold tracking-wider uppercase">
                   {employee.attributes.name}
                 </h1>
               </div>
               <div>
-                <h1 className="text-2xl font-poppinsLight tracking-widest">
+                <h1 className="text-xl font-poppinsLight tracking-widest">
                   {employee.attributes.designation}
                 </h1>
               </div>
@@ -95,14 +95,16 @@ const CVBuilder = async ({ params }: { params: { slug: string } }) => {
                 <div className="flex justify-center items-center bg-black w-5 h-5">
                   <FaPhone className="text-xs text-white" />
                 </div>
-                <p className="font-poppinsLight">{employee.attributes.phone}</p>
+                <p className="font-poppinsLight text-sm">
+                  {employee.attributes.phone}
+                </p>
               </div>
               {employee.attributes.website ? (
                 <div className="flex gap-2 items-center">
                   <div className="flex justify-center items-center bg-black w-5 h-5">
                     <BsFillLaptopFill className="text-sm text-white" />
                   </div>
-                  <p className="font-poppinsLight">
+                  <p className="font-poppinsLight text-sm">
                     {employee.attributes.website}
                   </p>
                 </div>
@@ -111,7 +113,9 @@ const CVBuilder = async ({ params }: { params: { slug: string } }) => {
                 <div className="flex justify-center items-center bg-black w-5 h-5">
                   <MdEmail className="text-sm text-white" />
                 </div>
-                <p className="font-poppinsLight">{employee.attributes.email}</p>
+                <p className="font-poppinsLight text-sm">
+                  {employee.attributes.email}
+                </p>
               </div>
             </div>
           </div>
@@ -150,10 +154,10 @@ const CVBuilder = async ({ params }: { params: { slug: string } }) => {
             {employee.attributes.techStacks.length > 0 ? (
               <div className="flex flex-col gap-3">
                 <h2 className="font-poppinsBold text-xl">TECH STACK</h2>
-                <ul className="flex flex-wrap gap-x-6 gap-y-3 list-disc ml-[14px] pr-5">
+                <ul className="flex flex-wrap gap-x-5 gap-y-1 list-disc ml-[14px] pr-5">
                   {employee.attributes.techStacks.map((techStack, index) => (
                     <Fragment key={index}>
-                      <li key={index} className="font-poppinsThin text-sm">
+                      <li key={index} className="font-poppinsThin text-xs">
                         {techStack.point}
                       </li>
                     </Fragment>
@@ -166,10 +170,10 @@ const CVBuilder = async ({ params }: { params: { slug: string } }) => {
             {employee.attributes.tools.length > 0 ? (
               <div className="flex flex-col gap-3">
                 <h2 className="font-poppinsBold text-xl">TOOLS</h2>
-                <ul className="flex flex-wrap gap-x-6 gap-y-3 list-disc ml-[14px] pr-5">
+                <ul className="flex flex-wrap gap-x-5 gap-y-1 list-disc ml-[14px] pr-5">
                   {employee.attributes.tools.map((tool, index) => (
                     <Fragment key={index}>
-                      <li key={index} className="font-poppinsThin text-sm">
+                      <li key={index} className="font-poppinsThin text-xs">
                         {tool.point}
                       </li>
                     </Fragment>
@@ -182,10 +186,10 @@ const CVBuilder = async ({ params }: { params: { slug: string } }) => {
             {employee.attributes.skills.length > 0 ? (
               <div className="flex flex-col gap-3">
                 <h2 className="font-poppinsBold text-xl">SKILLS</h2>
-                <ul className="flex flex-wrap gap-x-6 gap-y-3 list-disc ml-[14px] pr-5">
+                <ul className="flex flex-wrap gap-x-5 gap-y-1 list-disc ml-[14px] pr-5">
                   {employee.attributes.skills.map((skill, index) => (
                     <Fragment key={index}>
-                      <li key={index} className="font-poppinsThin text-sm">
+                      <li key={index} className="font-poppinsThin text-xs">
                         {skill.point}
                       </li>
                     </Fragment>
@@ -198,10 +202,10 @@ const CVBuilder = async ({ params }: { params: { slug: string } }) => {
             {employee.attributes.languages.length > 0 ? (
               <div className="flex flex-col gap-3">
                 <h2 className="font-poppinsBold text-xl">LANGUAGE</h2>
-                <ul className="flex flex-col gap-3 list-disc ml-[14px] pr-5">
+                <ul className="flex flex-col gap-1 list-disc ml-[14px] pr-5">
                   {employee.attributes.languages.map((language, index) => (
                     <Fragment key={index}>
-                      <li key={index} className="font-poppinsThin text-sm">
+                      <li key={index} className="font-poppinsThin text-xs">
                         {language.point}
                       </li>
                     </Fragment>
