@@ -67,7 +67,7 @@ const CVBuilder = async ({ params }: { params: { slug: string } }) => {
               <div className="rounded-full overflow-hidden relative w-[200px] h-[200px] border-[20px] border-white drop-shadow-[0_0_10px_rgba(0,0,0,0.25)]">
                 <Image
                   src={employee.attributes.avatarImageUrl as string}
-                  alt="Avatar"
+                  alt="Avatar pic"
                   fill
                   className="object-cover"
                   sizes="200px"
