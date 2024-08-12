@@ -15,7 +15,7 @@
     "link": {
       "type": "string"
     },
-    "points": {
+    "detailedPoints": {
       "type": "component",
       "repeatable": true,
       "component": "cv.points"

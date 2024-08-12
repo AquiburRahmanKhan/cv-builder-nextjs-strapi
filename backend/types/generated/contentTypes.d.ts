@@ -385,10 +385,10 @@ export interface ApiEmployeeEmployee extends Schema.CollectionType {
     profile: Attribute.Text;
     experiences: Attribute.Component<'cv.experiences', true>;
     projects: Attribute.Component<'cv.projects', true>;
-    techStacks: Attribute.Component<'cv.points', true>;
-    tools: Attribute.Component<'cv.points', true>;
-    skills: Attribute.Component<'cv.points', true>;
-    languages: Attribute.Component<'cv.points', true>;
+    techStacks: Attribute.Component<'cv.short-points', true>;
+    tools: Attribute.Component<'cv.short-points', true>;
+    skills: Attribute.Component<'cv.short-points', true>;
+    languages: Attribute.Component<'cv.short-points', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

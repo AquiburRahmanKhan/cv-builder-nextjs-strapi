@@ -62,22 +62,22 @@
     "techStacks": {
       "type": "component",
       "repeatable": true,
-      "component": "cv.points"
+      "component": "cv.short-points"
     },
     "tools": {
       "type": "component",
       "repeatable": true,
-      "component": "cv.points"
+      "component": "cv.short-points"
     },
     "skills": {
       "type": "component",
       "repeatable": true,
-      "component": "cv.points"
+      "component": "cv.short-points"
     },
     "languages": {
       "type": "component",
       "repeatable": true,
-      "component": "cv.points"
+      "component": "cv.short-points"
     }
   }
 }

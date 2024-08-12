@@ -23,17 +23,18 @@ export interface CvExperiences extends Schema.Component {
     companyName: Attribute.String;
     role: Attribute.String;
     duration: Attribute.String;
-    points: Attribute.Component<'cv.points', true>;
+    detailedPoints: Attribute.Component<'cv.points', true>;
   };
 }
 
 export interface CvPoints extends Schema.Component {
   collectionName: 'components_cv_points';
   info: {
-    displayName: 'points';
+    displayName: 'Detailed Points';
+    description: '';
   };
   attributes: {
-    point: Attribute.Text;
+    detail: Attribute.Text;
   };
 }
 
@@ -47,9 +48,20 @@ export interface CvProjects extends Schema.Component {
     projectName: Attribute.String;
     duration: Attribute.String;
     link: Attribute.String;
-    points: Attribute.Component<'cv.points', true>;
+    detailedPoints: Attribute.Component<'cv.points', true>;
     tech: Attribute.Text;
     role: Attribute.String;
+  };
+}
+
+export interface CvShortPoints extends Schema.Component {
+  collectionName: 'components_cv_short_points';
+  info: {
+    displayName: 'Short Points';
+    description: '';
+  };
+  attributes: {
+    point: Attribute.String;
   };
 }
 
@@ -230,6 +242,7 @@ declare module '@strapi/types' {
       'cv.experiences': CvExperiences;
       'cv.points': CvPoints;
       'cv.projects': CvProjects;
+      'cv.short-points': CvShortPoints;
       'elements.footer-section': ElementsFooterSection;
       'elements.logos': ElementsLogos;
       'layout.footer': LayoutFooter;

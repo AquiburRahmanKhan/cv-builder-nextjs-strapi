@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_cv_short_points",
+  "info": {
+    "displayName": "Short Points",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "point": {
+      "type": "string"
+    }
+  }
+}

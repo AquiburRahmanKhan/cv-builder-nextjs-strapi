@@ -23,13 +23,13 @@ const fetchEmployee = async (slug: string) => {
         experiences: {
           fields: "*",
           populate: {
-            points: "*",
+            detailedPoints: "*",
           },
         },
         projects: {
           fields: "*",
           populate: {
-            points: "*",
+            detailedPoints: "*",
           },
         },
         techStacks: "*",
@@ -244,12 +244,12 @@ const CVBuilder = async ({ params }: { params: { slug: string } }) => {
                           {experience.role}
                         </p>
                         <ul className="flex flex-col gap-2 list-disc ml-[14px]">
-                          {experience.points.map((point, index) => (
+                          {experience.detailedPoints.map((point, index) => (
                             <li
                               key={index}
                               className="font-poppinsThin text-sm"
                             >
-                              {point.point}
+                              {point.detail}
                             </li>
                           ))}
                         </ul>
@@ -289,12 +289,12 @@ const CVBuilder = async ({ params }: { params: { slug: string } }) => {
                           </a>
                         ) : null}
                         <ul className="flex flex-col gap-2 list-disc ml-[14px]">
-                          {project.points.map((point, index) => (
+                          {project.detailedPoints.map((point, index) => (
                             <li
                               key={index}
                               className="font-poppinsThin text-sm"
                             >
-                              {point.point}
+                              {point.detail}
                             </li>
                           ))}
                         </ul>

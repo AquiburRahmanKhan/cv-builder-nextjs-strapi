@@ -77,6 +77,11 @@ export interface Education {
   dateRange: string;
 }
 
+export interface DetailedPoint {
+  id: number;
+  detail: string;
+}
+
 export interface Point {
   id: number;
   point: string;
@@ -87,7 +92,7 @@ export interface Experience {
   companyName: string;
   role: string;
   duration: string;
-  points: Point[];
+  detailedPoints: DetailedPoint[];
 }
 
 export interface Projects {
@@ -96,7 +101,7 @@ export interface Projects {
   role: string;
   link: string;
   duration: string;
-  points: Point[];
+  detailedPoints: DetailedPoint[];
 }
 
 export interface Employee {

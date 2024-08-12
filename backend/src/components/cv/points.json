@@ -1,11 +1,12 @@
 {
   "collectionName": "components_cv_points",
   "info": {
-    "displayName": "points"
+    "displayName": "Detailed Points",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "point": {
+    "detail": {
       "type": "text"
     }
   }
