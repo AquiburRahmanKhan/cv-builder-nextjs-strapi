@@ -17,6 +17,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "thumbs.dreamstime.com",
       },
+      {
+        protocol: "https",
+        hostname: "cv-builder-nextjs-strapi-production.up.railway.app",
+      },
     ],
   },
 };
