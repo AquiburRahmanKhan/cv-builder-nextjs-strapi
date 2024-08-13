@@ -3,7 +3,7 @@ const path = require("path");
 module.exports = ({ env }) => {
   console.log(
     "directive name",
-    path.join(__dirname, "..", "..", env("DATABASE_FILENAME", ".tmp/data.db"))
+    path.join(__dirname, "..", "..", env("DATABASE_FILENAME1", ".tmp/data.db"))
   );
   return {
     connection: {
