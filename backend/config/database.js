@@ -1,11 +1,21 @@
-const path = require('path');
+const path = require("path");
 
-module.exports = ({ env }) => ({
-  connection: {
-    client: 'sqlite',
+module.exports = ({ env }) => {
+  console.log(
+    "directive name",
+    path.join(__dirname, "..", env("DATABASE_FILENAME", ".tmp/data.db"))
+  );
+  return {
     connection: {
-      filename: path.join(__dirname, '..', env('DATABASE_FILENAME', '.tmp/data.db')),
+      client: "sqlite",
+      connection: {
+        filename: path.join(
+          __dirname,
+          "..",
+          env("DATABASE_FILENAME", ".tmp/data.db")
+        ),
+      },
+      useNullAsDefault: true,
     },
-    useNullAsDefault: true,
-  },
-});
+  };
+};
