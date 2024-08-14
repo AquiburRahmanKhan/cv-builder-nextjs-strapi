@@ -299,7 +299,7 @@ const CVBuilder = async ({ params }: { params: { slug: string } }) => {
                           ))}
                         </ul>
                         <p className="font-poppinsThin text-sm">
-                          <span className="font-poppinsLight">Tech:</span>{" "}
+                          <span className="font-poppinsLight">Tech:</span>&nbsp;
                           {project.tech}
                         </p>
                       </div>
