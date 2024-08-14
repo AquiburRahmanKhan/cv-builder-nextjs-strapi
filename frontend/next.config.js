@@ -22,6 +22,7 @@ const nextConfig = {
         hostname: "cv-builder-nextjs-strapi-production.up.railway.app",
       },
     ],
+    domains: ["res.cloudinary.com"],
   },
 };
 

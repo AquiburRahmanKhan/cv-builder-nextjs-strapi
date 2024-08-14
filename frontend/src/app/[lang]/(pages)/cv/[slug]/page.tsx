@@ -298,6 +298,10 @@ const CVBuilder = async ({ params }: { params: { slug: string } }) => {
                             </li>
                           ))}
                         </ul>
+                        <p className="font-poppinsThin text-sm">
+                          <span className="font-poppinsLight">Tech:</span>{" "}
+                          {project.tech}
+                        </p>
                       </div>
                     </Fragment>
                   ))}

@@ -101,6 +101,7 @@ export interface Projects {
   role: string;
   link: string;
   duration: string;
+  tech: string;
   detailedPoints: DetailedPoint[];
 }
 
