@@ -59,11 +59,6 @@
       "repeatable": true,
       "component": "cv.projects"
     },
-    "techStacks": {
-      "type": "component",
-      "repeatable": true,
-      "component": "cv.short-points"
-    },
     "tools": {
       "type": "component",
       "repeatable": true,
@@ -78,6 +73,11 @@
       "type": "component",
       "repeatable": true,
       "component": "cv.short-points"
+    },
+    "techStacks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tech-stack.tech-stack"
     }
   }
 }

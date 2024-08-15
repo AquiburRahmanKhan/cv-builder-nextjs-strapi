@@ -6,13 +6,7 @@
   },
   "options": {},
   "attributes": {
-    "projectName": {
-      "type": "string"
-    },
     "duration": {
-      "type": "string"
-    },
-    "link": {
       "type": "string"
     },
     "detailedPoints": {
@@ -20,11 +14,21 @@
       "repeatable": true,
       "component": "cv.points"
     },
-    "tech": {
-      "type": "text"
-    },
     "role": {
       "type": "string"
+    },
+    "project": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::project.project"
+    },
+    "identifier": {
+      "type": "string"
+    },
+    "techStacks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tech-stack.tech-stack"
     }
   }
 }

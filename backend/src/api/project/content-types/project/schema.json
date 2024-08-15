@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projects",
+  "info": {
+    "singularName": "project",
+    "pluralName": "projects",
+    "displayName": "Project",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "intro": {
+      "type": "text"
+    },
+    "domains": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cv.short-points"
+    },
+    "link": {
+      "type": "string"
+    },
+    "duration": {
+      "type": "string"
+    },
+    "techStacks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tech-stack.tech-stack"
+    }
+  }
+}

@@ -30,6 +30,8 @@ const fetchEmployee = async (slug: string) => {
           fields: "*",
           populate: {
             detailedPoints: "*",
+            techStacks: "*",
+            project: "*",
           },
         },
         techStacks: "*",
@@ -151,17 +153,19 @@ const CVBuilder = async ({ params }: { params: { slug: string } }) => {
             ) : null}
 
             {/* Tech Stack */}
-            {employee.attributes.techStacks.length > 0 ? (
+            {employee.attributes.techStacks.data.length > 0 ? (
               <div className="flex flex-col gap-3">
                 <h2 className="font-poppinsBold text-xl">TECH STACK</h2>
                 <ul className="flex flex-wrap gap-x-5 gap-y-1 list-disc ml-[14px] pr-5">
-                  {employee.attributes.techStacks.map((techStack, index) => (
-                    <Fragment key={index}>
-                      <li key={index} className="font-poppinsThin text-xs">
-                        {techStack.point}
-                      </li>
-                    </Fragment>
-                  ))}
+                  {employee.attributes.techStacks.data.map(
+                    (techStack, index) => (
+                      <Fragment key={index}>
+                        <li key={index} className="font-poppinsThin text-xs">
+                          {techStack.attributes.name}
+                        </li>
+                      </Fragment>
+                    )
+                  )}
                 </ul>
               </div>
             ) : null}
@@ -270,7 +274,7 @@ const CVBuilder = async ({ params }: { params: { slug: string } }) => {
                       <div className="flex flex-col gap-2">
                         <div className="flex justify-between items-center">
                           <h3 className="font-poppinsSemiBold text-lg">
-                            {project.projectName}
+                            {project.project.data.attributes.name}
                           </h3>
                           <p className="font-poppinsSemiBold text-xs tracking-widest">
                             {project.duration}
@@ -279,13 +283,13 @@ const CVBuilder = async ({ params }: { params: { slug: string } }) => {
                         <p className="font-poppinsLight text-sm">
                           {project.role}
                         </p>
-                        {project.link ? (
+                        {project.project.data.attributes.link ? (
                           <a
-                            href={project.link}
+                            href={project.project.data.attributes.link}
                             target="_blank"
                             className="font-poppinsLight text-sm"
                           >
-                            {project.link}
+                            {project.project.data.attributes.link}
                           </a>
                         ) : null}
                         <ul className="flex flex-col gap-2 list-disc ml-[14px]">
@@ -300,7 +304,12 @@ const CVBuilder = async ({ params }: { params: { slug: string } }) => {
                         </ul>
                         <p className="font-poppinsThin text-sm">
                           <span className="font-poppinsLight">Tech:</span>&nbsp;
-                          {project.tech}
+                          {project.techStacks.data.map((techStack, index) => (
+                            <Fragment key={index}>
+                              {index > 0 ? ", " : ""}
+                              {techStack.attributes.name}
+                            </Fragment>
+                          ))}
                         </p>
                       </div>
                     </Fragment>

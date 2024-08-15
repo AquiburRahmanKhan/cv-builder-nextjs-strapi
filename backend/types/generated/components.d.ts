@@ -45,12 +45,20 @@ export interface CvProjects extends Schema.Component {
     description: '';
   };
   attributes: {
-    projectName: Attribute.String;
     duration: Attribute.String;
-    link: Attribute.String;
     detailedPoints: Attribute.Component<'cv.points', true>;
-    tech: Attribute.Text;
     role: Attribute.String;
+    project: Attribute.Relation<
+      'cv.projects',
+      'oneToOne',
+      'api::project.project'
+    >;
+    identifier: Attribute.String;
+    techStacks: Attribute.Relation<
+      'cv.projects',
+      'oneToMany',
+      'api::tech-stack.tech-stack'
+    >;
   };
 }
 

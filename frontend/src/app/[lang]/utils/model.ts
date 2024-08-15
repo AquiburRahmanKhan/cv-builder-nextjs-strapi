@@ -1,8 +1,3 @@
-type StrapiResponse<T> = {
-  data: T;
-  message: string;
-};
-
 export interface Attribute {
   url: string;
   alternativeText?: any;
@@ -95,14 +90,41 @@ export interface Experience {
   detailedPoints: DetailedPoint[];
 }
 
+export interface TechStacks {
+  data: {
+    id: number;
+    attributes: {
+      name: string;
+      createdAt: string;
+      updatedAt: string;
+      publishedAt: string;
+    };
+  }[];
+}
+
+export interface Project {
+  data: {
+    id: number;
+    attributes: {
+      name: string;
+      intro: string;
+      link: string;
+      duration: string;
+      createdAt: string;
+      updatedAt: string;
+      publishedAt: string;
+    };
+  };
+}
+
 export interface Projects {
   id: number;
-  projectName: string;
-  role: string;
-  link: string;
   duration: string;
-  tech: string;
+  role: string;
+  identifier: string;
   detailedPoints: DetailedPoint[];
+  techStacks: TechStacks;
+  project: Project;
 }
 
 export interface Employee {
@@ -120,7 +142,7 @@ export interface Employee {
     profile: string;
     experiences: Experience[];
     projects: Projects[];
-    techStacks: Point[];
+    techStacks: TechStacks;
     tools: Point[];
     skills: Point[];
     languages: Point[];
